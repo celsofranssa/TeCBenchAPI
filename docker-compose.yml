@@ -1,0 +1,10 @@
+version: '1.0.0'
+services:
+  TeCBenchAPI:
+    build: .
+    image: TeCBenchAPI
+    container_name: TeCBenchAPI
+    ports:
+      - "7779:80"
+    volumes:
+      - .:/TeCBenchAPI
