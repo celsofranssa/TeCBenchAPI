@@ -16,7 +16,7 @@ docker compose up
 
 ```
     {
-        "texto": "Essa é uma reclamaćão",
+        "texto": "Essa é uma reclamação",
     }
 ```
 ## Exemplos de requisição:
