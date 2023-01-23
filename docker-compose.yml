@@ -2,9 +2,11 @@ version: '1.0.0'
 services:
   TeCBenchAPI:
     build: .
-    image: TeCBenchAPI
-    container_name: TeCBenchAPI
+    image: tecbench-api
+    container_name: tecbench-api
     ports:
-      - "7779:80"
+      - "5000:5000"
     volumes:
       - .:/TeCBenchAPI
+  redis:
+        image: redis
