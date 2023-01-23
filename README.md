@@ -1,6 +1,6 @@
 # TeCBenchAPI - Classificador de Manifestações do Procon.
 
-RestFULL API para classificar textos de manifestações.
+RESTful API para classificar textos de manifestações.
 
 ## Inicializando a API:
 ```
