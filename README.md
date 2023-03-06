@@ -7,6 +7,7 @@ RESTful API para classificar textos de manifestações.
 docker compose up
 ```
     
+
 ## Endpoints:
 
 ### /predict
