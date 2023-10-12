@@ -1,0 +1,11 @@
+host: 0.0.0.0
+port: 8000
+reload: True
+model:
+  encoder:
+    architecture: neuralmind/bert-base-portuguese-cased
+  name: BERTimbau
+  tokenizer:
+    architecture: ${model.encoder.architecture}
+  version: 2023_10
+labels: [fair, fraud]

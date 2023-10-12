@@ -1,10 +1,16 @@
-# TeCBenchAPI - Classificador de Manifestações do Procon.
+# TeCBenchAPI - Classificador de Manifestações do ProconData.
 
 RESTful API para classificar textos de manifestações.
 
-## Inicializando a API:
+## Building
 ```
-docker compose up
+# build a docker image for TeCBenchAPI
+docker build -t tecbench-api .
+```
+
+## Deploying
+```
+docker run -p 8000:8000 tecbench-api
 ```
     
 
@@ -17,17 +23,12 @@ docker compose up
 
 ```
     {
-        "texto": "Essa é uma reclamação",
+        "idx": 25,
+        "text": "o o site nao entregou a mercadoria"
     }
 ```
-## Exemplos de requisição:
-```
-{
-    "text": "o o site nao entregou a mercadoria"
-}
-```
 
-### Exemplo de resultado:
+### Resposta:
 ```
 {
     "alimentos": 0.010813464410603046,
