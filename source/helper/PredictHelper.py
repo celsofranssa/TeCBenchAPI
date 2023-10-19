@@ -3,21 +3,21 @@ from datetime import time
 import numpy as np
 import onnxruntime
 from transformers import BertTokenizer, AutoTokenizer
+from scipy.special import softmax
 
 
 class PredictHelper:
 
     def __init__(self):
         self.tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
-        self.labels = ['alimentos', 'combustíveis', 'finanças', 'habitação', 'produtos', 'publicidade', 'saúde',
-                       'serviços públicos e privados', 'serviços regulamentados pela anatel']
+        self.labels = ['publicidade', 'serviços regulamentados pela anatel', 'finanças', 'produtos', 'extra-procon', 'serviços públicos e privados', 'serviço de atendimento ao consumidor', 'criminal', 'alimentos', 'saúde', 'combustíveis', 'habitação', 'administrativo – institucional']
 
         self._load_onnxruntime()
 
     def _load_onnxruntime(self):
         # onnxruntime
         self.ort_session = onnxruntime.InferenceSession(
-            "resource/onnx/BERTimbau_PROCON.onnx",
+            "resource/onnx/TeCBench_MPMG_VRS_1.0.0.onnx",
             providers=["CPUExecutionProvider", "CUDAExecutionProvider"]
         )
         self.input_name = self.ort_session.get_inputs()[0].name
@@ -46,6 +46,6 @@ class PredictHelper:
 
     def _reshape_prediction(self, prediction):
         reshaped_prediction = {}
-        for label, score in zip(self.labels, prediction[0].tolist()[0]):
+        for label, score in zip(self.labels, softmax(prediction[1].tolist()[0])):
             reshaped_prediction[label] = score
         return reshaped_prediction
